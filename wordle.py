@@ -1,9 +1,8 @@
-from english_words import english_words_lower_set
-five_letters = []
-for word in english_words_lower_set:
-    if len(word) == 5:
-        five_letters.append(word)
-
+f = open("five_letter_words.txt", "r")
+candidates = []
+for word in f: 
+    candidates.append(word.strip())
+f.close()
 
 def suggest_word(candidates):
     guesses = [] #contains [{"guess", #cor, #wrong}]
@@ -65,8 +64,6 @@ def suggest_word(candidates):
         candidates.remove(word)
     return candidates
 
- 
-candidates = five_letters
 candidates = suggest_word(candidates)
 print(candidates)
 user_inp = input("Add Another? (e to quit)")
